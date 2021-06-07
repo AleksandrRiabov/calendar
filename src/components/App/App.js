@@ -1,9 +1,11 @@
 import './App.css';
+import CalendarHeader from "../CalendarHeader/CalendarHeader";
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>Calendar</h1>
+    <div className="calendar">
+      <CalendarHeader />
     </div>
   );
 }
