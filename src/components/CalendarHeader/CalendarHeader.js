@@ -1,11 +1,14 @@
 import "./CalendarHeader.css";
+import {useGlobalContext} from "../../context";
 
 const CalendarHeader = () => {
+	const {currentDate, subtractMonth, addMonth} = useGlobalContext();
+	
 	return (
 	   <div className="calendarHeader">
-		   <h3 className="headerTitle">June <span className="calendarYear">2021</span></h3>
-		   <div className="arrow left"></div>
-		   <div className="arrow right"></div>
+		   <h3 className="headerTitle">{currentDate.format("MMMM")} <span className="calendarYear">{currentDate.format("YYYY")}</span></h3>
+		   <div onClick={() => subtractMonth()} className="arrow left"></div>
+		   <div onClick={() => addMonth()} className="arrow right"></div>
 		</div>
 	)
 }

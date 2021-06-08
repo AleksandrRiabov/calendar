@@ -1,6 +1,9 @@
 import "./SingleDay.css";
+// import {useGlobalContext} from "../../context";
+
 
 const SingleDay = () => {
+	
 	return (
 	   <div className="singleDay">
 		  <div className="dayName">Mon</div>
