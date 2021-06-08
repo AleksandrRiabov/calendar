@@ -1,0 +1,34 @@
+.singleDay{
+    width: 14.286%;
+	padding: 10px;
+	text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+	display: inline-block;
+}
+
+
+.singleDay .dayName {
+  font-size: 9px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, .5);
+  letter-spacing: .7px;
+}
+
+.singleDay .dayNumber {
+  font-size: 24px;
+  letter-spacing: 1.5px;
+}
+
+.singleDay .indicator{
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	background: yellow;
+	margin-right: 1px;
+}
+
+.singleDay .today {
+  color: rgba(156, 202, 235, 0.5);
+}

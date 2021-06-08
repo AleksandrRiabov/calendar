@@ -1,0 +1,54 @@
+.dayInfo {
+	  width: 100%;
+	  min-height: 75px;
+      position: relative;
+	  background: rgba(164, 164, 164, 1);
+	  margin-top: 5px;
+	  border-radius: 4px;
+	  padding: 10px;
+	
+}
+
+
+.dayInfo .selectedDayArrow{
+	  position: absolute;
+	  top: -5px;
+	  left: 20.786%;
+	  margin-left: -2px;
+	  width: 0px;
+	  height: 0px;
+	  border-style: solid;
+	  border-width: 0 5px 5px 5px;
+	  border-color: transparent transparent rgba(164, 164, 164, 1) transparent;
+	  transition: all 0.7s ease;
+}
+
+.dayInfo .indicator{
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	background: yellow;
+	margin-right: 1px;
+}
+
+.dayTimesWrapper{
+	margin: 0 auto;
+    width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.dayInfo .dayInfoTime{
+	padding: 2px;;
+	margin: 2px;;
+	cursor: pointer;
+	border: 1px solid;
+	width: 48%;
+	text-align: center;
+	font-weight: 100;
+	color: #424242;
+}
+
+.dayInfo span{
+	margin-right: 2px;
+}

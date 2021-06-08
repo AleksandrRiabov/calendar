@@ -1,0 +1,34 @@
+.calendarFooter {
+	  position: absolute;
+	  bottom: -35px;
+	  width: 100%;
+	  height: 30px;
+	  background: rgba(60, 60, 60, 1);
+	  line-height: 30px;
+}
+
+.calendarFooterItem {
+	  padding: 0 0 0 25px;
+	  font-size: 13px;
+	  display: inline-block;
+	  line-height: 30px;
+	  background: transparent;
+}
+
+
+.calendarFooterItem h5{
+	margin: 0;
+	padding: 0;
+	margin-left: 5px;
+	display: inline-block;
+	text-transform: capitalize;
+}
+
+
+.calendarFooterItem .indicator{
+	display: inline-block;
+	width: 5px;
+	height: 5px;
+	background: yellow;
+	margin-right: 1px;
+}
