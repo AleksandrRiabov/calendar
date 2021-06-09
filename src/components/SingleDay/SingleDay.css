@@ -32,3 +32,13 @@
 .singleDay .today {
   color: rgba(156, 202, 235, 0.5);
 }
+
+.other{
+	opacity: 0.3;
+}
+
+
+.selectedDay{
+	
+	background: #ffffff10;
+}

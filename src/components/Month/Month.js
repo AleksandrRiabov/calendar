@@ -1,15 +1,15 @@
 import "./Month.css";
 import Week from "../Week/Week";
+import {useGlobalContext} from "../../context";
 
 const Month = () => {
+	const {calendar} = useGlobalContext();
+	
 	return (
 	   <div className="month">
-			<Week />
-			<Week />
-			<Week />
-			<Week />
-			<Week />
-			<Week />
+			{calendar.map((week, index) => {
+				return <Week key={index} week={week}/>
+			})}
 		</div>
 	)
 }

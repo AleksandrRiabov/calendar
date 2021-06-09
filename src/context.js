@@ -4,25 +4,43 @@ import reducer from "./reducer";
 const AppContext = React.createContext();
 
 const initialState = {
-	currentDate: moment()
+	currentDate: moment(),
+	calendar: [],
+	selectedDay: moment() //today
 }
 const AppProvider = ({children}) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 	
 	
+	
+	useEffect(() => {
+		dispatch({type: "BUILD CALENDAR"})
+	},[])
+	
 	const subtractMonth = () => {
 	     dispatch({type: "SUBTRACT MONTH"})	
+		 dispatch({type: "BUILD CALENDAR"})
 	}
 	
 	const addMonth = () => {
-		console.log()
-	     dispatch({type: "ADD MONTH"})	
+	     dispatch({type: "ADD MONTH"})
+		 dispatch({type: "BUILD CALENDAR"})
 	}
+	
+	const selectDay = (day) => {
+		 dispatch({type: "SELECT DAY", payload: day})
+	}
+	
+	
+	
 	
 	const data = {
 		currentDate: state.currentDate,
 		subtractMonth, 
 		addMonth,
+		calendar: state.calendar,
+		selectedDay: state.selectedDay,
+		selectDay: selectDay,
 	}
 	
 	return <AppContext.Provider
