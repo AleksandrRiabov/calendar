@@ -1,3 +1,10 @@
 .week {
 	width: 100%;
+	opacity: 0.5;
+	transition: 1s opacity;
+}
+
+.weekDidMount{
+	opacity: 1;
+		transition: 1s opacity;
 }

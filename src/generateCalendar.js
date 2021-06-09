@@ -4,8 +4,7 @@ const generateCalendar = (startingDate) => {
 	const endDay = value.clone().endOf("month").startOf("week");
 	const day = startDay.clone().subtract(1, "day");
 	
-	
-	console.log(endDay)
+
 	const calendar = [];
 	
 	while(day.isBefore(endDay, day)){

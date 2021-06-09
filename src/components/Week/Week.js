@@ -1,3 +1,4 @@
+import {useEffect, useRef} from "react";
 import "./Week.css";
 import SingleDay from "../SingleDay/SingleDay";
 import DayInfo from "../DayInfo/DayInfo";
@@ -8,8 +9,15 @@ const Week = ({week}) =>{
 	const isThisWeek = (week[1].week() === selectedDay.week() &&
 						week[1].year() === selectedDay.year());
 	
+	const weekRef = useRef(null);
+	
+	useEffect(() => {
+		const weekComponent =  weekRef.current;
+		weekComponent.style.opacity = 1;          
+	},[]);
+	
 	return (
-	   <div className="week">
+	   <div ref={weekRef} className="week">
             {week.map((day, index) => {
 				return <SingleDay key={index} day={day}/>
 			})}	   
