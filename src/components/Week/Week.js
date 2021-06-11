@@ -21,7 +21,7 @@ const Week = ({week}) =>{
             {week.map((day, index) => {
 				return <SingleDay key={index} day={day}/>
 			})}	   
-			{isThisWeek && <DayInfo />}
+			 <DayInfo isThisWeek={isThisWeek} />
 		</div>
 	)
 }

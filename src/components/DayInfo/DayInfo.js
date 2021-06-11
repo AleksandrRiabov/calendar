@@ -10,11 +10,19 @@ const DayInfo = ({isThisWeek}) => {
 	
 	useEffect(() => {
 		dayInfoInnerRef.current.style.opacity = 1;
-		dayInfoRef.current.classList.add("dayInfoOpen");
+		const dayInfoDropDown = dayInfoRef.current;
 		
+		if (isThisWeek){
+			dayInfoDropDown.classList.add("dayInfoOpen");
+		}
+	
 		const arrowPos  = 7.142 + (selectedDay.format("d") * 14.2857);
 		arrowRef.current.style.left = `${arrowPos}%` 
-	}, [selectedDay])
+		
+		return () => {
+			dayInfoDropDown.classList.remove("dayInfoOpen");
+		}
+	}, [selectedDay, isThisWeek])
 	
 	return (
 	   <div ref={dayInfoRef} className="dayInfo">

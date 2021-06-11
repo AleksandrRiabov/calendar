@@ -5,16 +5,16 @@
 	  background: rgba(164, 164, 164, 1);
 	  margin-top: 5px;
 	  border-radius: 4px;
-	  padding: 10px;
 	  transition: all 0.3s ease-in;
 
 }
 
 .dayInfoOpen{
 	height: 120px;
+	padding: 10px;
 }
 
-.dayInfo .selectedDayArrow{
+.dayInfoOpen .selectedDayArrow{
 	  position: absolute;
 	  top: -5px;
 	  left: 20.786%;
@@ -24,7 +24,8 @@
 	  border-style: solid;
 	  border-width: 0 5px 5px 5px;
 	  border-color: transparent transparent rgba(164, 164, 164, 1) transparent;
-	  transition: all 0.7s ease;
+	  transition: left 0.7s ease;
+	  
 }
 
 .dayInfo .indicator{
