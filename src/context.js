@@ -32,7 +32,9 @@ const AppProvider = ({children}) => {
 	}
 	
 	
-	
+	const setAnimatedElement = (element) =>{
+		console.log(element)
+	}
 	
 	const data = {
 		currentDate: state.currentDate,
@@ -41,6 +43,7 @@ const AppProvider = ({children}) => {
 		calendar: state.calendar,
 		selectedDay: state.selectedDay,
 		selectDay: selectDay,
+		setAnimatedElement
 	}
 	
 	return <AppContext.Provider

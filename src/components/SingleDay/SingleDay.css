@@ -41,6 +41,7 @@
 .selectedDay{
 	background: #ffffff05;
 	position: relative;
+	transition: background 1s ease-in;
 }
 
 .selectedDay:before{

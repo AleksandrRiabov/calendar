@@ -15,6 +15,10 @@ const reducer = (state, action ) => {
 		
 		case  "SELECT DAY":
 			return {...state, selectedDay: action.payload}
+			
+		case  "ELEMENT TO ANIMATE":
+			return {...state, animatedElement: action.payload}
+			
 		default: 
 			return state;
 	}

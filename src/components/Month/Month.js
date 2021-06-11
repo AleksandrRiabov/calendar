@@ -9,12 +9,18 @@ const Month = () => {
 	
 	useEffect(() => {
 		const monthBlock = monthRef.current;
-	       monthBlock.style.top = 0 ;
+		monthBlock.style.transition = "none";
+		monthBlock.style.opacity = 0.3; 
 		
-	   return () => {
-		   monthBlock.style.top = -100 +"px";
-	   }
-	}, [calendar])
+		const timerId = setTimeout(() => {
+			monthBlock.style.transition = "opacity 0.2s ease-in";
+			monthBlock.style.opacity = 1; 
+		}, 200);
+  
+		return () => {
+			clearTimeout(timerId);
+		}
+	},[calendar]);
 	
 	return (
 	   <div ref={monthRef} className="month">
