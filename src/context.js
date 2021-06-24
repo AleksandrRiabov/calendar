@@ -6,7 +6,9 @@ const AppContext = React.createContext();
 const initialState = {
 	currentDate: moment(),
 	calendar: [],
-	selectedDay: moment() //today
+	selectedDay: moment(),
+	showBookingModal: true,
+	bookingModalContent: "Content"
 }
 const AppProvider = ({children}) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
@@ -31,10 +33,17 @@ const AppProvider = ({children}) => {
 		 dispatch({type: "SELECT DAY", payload: day})
 	}
 	
-	
-	const setAnimatedElement = (element) =>{
-		console.log(element)
+	const openBookingModal = (content) => {
+		dispatch({type: "OPEN BOOKING MODAL",  payload: content});
 	}
+    
+	const closeBookingModal = () => {
+		dispatch({type: "CLOSE BOOKING MODAL", payload: "e4mpty"});
+	}
+
+	
+	
+	
 	
 	const data = {
 		currentDate: state.currentDate,
@@ -43,7 +52,10 @@ const AppProvider = ({children}) => {
 		calendar: state.calendar,
 		selectedDay: state.selectedDay,
 		selectDay: selectDay,
-		setAnimatedElement
+		openBookingModal,
+		closeBookingModal,
+		showBookingModal: state.showBookingModal,
+		bookingModalContent: state.bookingModalContent
 	}
 	
 	return <AppContext.Provider

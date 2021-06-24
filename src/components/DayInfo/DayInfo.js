@@ -6,7 +6,7 @@ const DayInfo = ({isThisWeek}) => {
 	const dayInfoInnerRef = useRef(null);
 	const dayInfoRef = useRef(null);
 	const arrowRef = useRef(null);
-	const {selectedDay} = useGlobalContext();
+	const {selectedDay, openBookingModal} = useGlobalContext();
 	
 	useEffect(() => {
 		dayInfoInnerRef.current.style.opacity = 1;
@@ -29,7 +29,7 @@ const DayInfo = ({isThisWeek}) => {
 			<div ref={dayInfoInnerRef} className="dayTimesWrapper">
 			   <h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
 				<h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
-				<h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
+				<h5 onClick={() => {openBookingModal("04:00")}} className="dayInfoTime"><span className="indicator"></span> 04:00 <span>Availible</span></h5>
 				<h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
 				<h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
 				<h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>

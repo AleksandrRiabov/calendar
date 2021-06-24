@@ -15,10 +15,12 @@ const reducer = (state, action ) => {
 		
 		case  "SELECT DAY":
 			return {...state, selectedDay: action.payload}
-			
-		case  "ELEMENT TO ANIMATE":
-			return {...state, animatedElement: action.payload}
-			
+
+		case  "OPEN BOOKING MODAL":
+			return {...state,  showBookingModal: true, bookingModalContent: action.payload }
+		
+			case  "CLOSE BOOKING MODAL":
+				return {...state,  showBookingModal: false }	
 		default: 
 			return state;
 	}

@@ -1,0 +1,33 @@
+.modal-container{
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   background: rgb(0, 0, 0, 0.8);
+   z-index: 1000;
+}
+
+.modal{
+   width: 100%;
+   max-width: 420px;
+   min-height: 200px;
+   margin: 50px auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   background: pink;
+}
+
+.modal-content{
+   padding: 10px;
+}
+
+.modal .close{
+   position: absolute;
+   top: 1px;
+   right: 1px;
+   padding: 4px 8px;;
+   background-color: red;
+}
