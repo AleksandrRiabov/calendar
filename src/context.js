@@ -43,8 +43,6 @@ const AppProvider = ({children}) => {
 
 	
 	
-	
-	
 	const data = {
 		currentDate: state.currentDate,
 		subtractMonth, 
