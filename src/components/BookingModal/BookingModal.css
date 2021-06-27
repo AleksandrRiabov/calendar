@@ -1,5 +1,5 @@
 .modal{
-   position: absolute;
+   position: fixed;
    top: 0;
    left: 0;
    bottom: 0;
@@ -9,6 +9,9 @@
    opacity: 0;
    transition: 0.5s ease;
    pointer-events: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .active {
@@ -19,20 +22,18 @@
 .modal-container{
    width: 100%;
    max-width: 420px;
-   min-height: 200px;
-   margin: 50px auto;
    display: flex;
    justify-content: center;
    align-items: center;
    position: relative;
-   background: #565555;
+   background: #e4e4e4;
    border-radius: 5px;
 }
 
 .modal-content{
-   padding: 10px;
-   transform: scale(0.5);
-   transition: 0.6s ease-in-out;
+   padding: 30px 10px;
+   transform: scale(0.9);
+   transition: 0.5s ease-in-out;
 }
 
 .modal-content-active{
@@ -46,4 +47,13 @@
    padding: 3px 6px;;
    background-color: red;
    border-radius: 5px;
+   cursor: pointer;
 }
+
+.flex-wrapper{
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 20px;
+}
+
+
