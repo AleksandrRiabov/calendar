@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useReducer} from "react";
 import moment from "moment";
 import reducer from "./reducer";
 import serverData from "./backEnd.js";
+import fetchData from "./functions/fetchData";
 const AppContext = React.createContext();
 
 const initialState = {
@@ -22,15 +23,7 @@ const AppProvider = ({children}) => {
 	   const generateCalendar = async(startingDate) => {
 		dispatch({type: "LOADING", payload: true});
 		
-	// 	try{
-	// 		const res = await fetch(`https://sserverapi.run.goorm.io/api/${startingDate.format("MMMMDDYYYY")}`)
-	// 		  const dada = await res.json();
-	// 		console.log(dada)
-	// 	} catch{
-	// 		console.log("Cant fetchj");
-	// }	
-
-
+		const serverData = await fetchData("http://localhost:3001/getmonth/fghfh");
 	   const value = startingDate;
 	   const startDay = value.clone().startOf("month").startOf("week");
 		const endDay = value.clone().endOf("month").startOf("week");
@@ -44,8 +37,8 @@ const AppProvider = ({children}) => {
 				.fill(0)
 				.map(() => {
 					const date = day.add(1, "day").clone();
-					const data = serverData.month[date.format("MM DD YYYY")] ? serverData.month[date.format("MM DD YYYY")]: {workDay: true,
-						  times: [{time: "12:00", available: true}, {time: "15:00", available: true}, {time: "16:00", available: true}, {time: "19:00", available: false}]
+					const data = serverData[date.format("MM DD YYYY")] ? serverData[date.format("MM DD YYYY")]: {workDay: false,
+						  times: [{time: "12:00", available: false}, {time: "15:00", available: false}, {time: "16:00", available: false}, {time: "19:00", available: false}]
 						  };
 					if (date.format("MMMM DD YYYY") === startingDate.format("MMMM DD YYYY")){
 						dispatch({type: "SELECT DAY", payload: {day: date,data}}) 
@@ -56,13 +49,10 @@ const AppProvider = ({children}) => {
 				  }
 				})
 			)
-		}
-		return await setTimeout(() => {
-			
+		}	
 			dispatch({type: "CALENDAR", payload: calendar})
 			dispatch({type: "LOADING", payload: false})
 		return calendar;
-		}, 1000)
 	}
 	
 	
