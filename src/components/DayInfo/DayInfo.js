@@ -16,28 +16,26 @@ const DayInfo = ({isThisWeek}) => {
 			dayInfoDropDown.classList.add("dayInfoOpen");
 		}
 	
-		const arrowPos  = 7.142 + (selectedDay.format("d") * 14.2857);
+		const arrowPos  = 7.142 + (selectedDay.day.format("d") * 14.2857);
 		arrowRef.current.style.left = `${arrowPos}%` 
 		
 		return () => {
 			dayInfoDropDown.classList.remove("dayInfoOpen");
 		}
 	}, [selectedDay, isThisWeek])
-	
+
 	return (
 	   <div ref={dayInfoRef} className="dayInfo">
 			<div ref={dayInfoInnerRef} className="dayTimesWrapper">
-			   <h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
-				<h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
-				<h5 onClick={() => {openBookingModal("04:00")}} className="dayInfoTime"><span className="indicator"></span> 04:00 <span>Availible</span></h5>
-				<h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
-				<h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
-				<h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
-				<h5 className="dayInfoTime"><span className="indicator"></span> 09:00 <span>Availible</span></h5>
+            {selectedDay.data.times.map((timeslot, index) => {
+					return <h5 
+					key={index}
+					onClick={() => {if (timeslot.available){openBookingModal(timeslot.time)}}} 
+					className={`dayInfoTime ${timeslot.available ? "available": "notAvailable"}`}
+					><span className="indicator"></span> {timeslot.time} <span>{timeslot.available ? "Available": "Not Available"}</span></h5>
+				})}
+				
 			</div>
-			
-			
-			
 		 <div ref={arrowRef} className="selectedDayArrow hide"></div>
 		</div>
 	)

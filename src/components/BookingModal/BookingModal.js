@@ -7,12 +7,14 @@ import Button from "@material-ui/core/Button";
 const initialForm = {name: "", lastName: "", mobile: "", email: "", message: ""};
 
 export default function BookingModal() {
-   const {showBookingModal, closeBookingModal, bookingModalContent, selectedDay} = useGlobalContext();
+   const {showBookingModal, closeBookingModal, bookingModalContent, selectedDay, setConfirmation} = useGlobalContext();
    const [formContent, setFormContenet] = useState(initialForm);
 
+
    const finalFormData = () => {
-      const formData = {...formContent, date: selectedDay.format("MMMM DD YYYY"), time: bookingModalContent}
-      console.log(formData)
+      const formData = {...formContent, date: selectedDay.day.format("MMMM DD YYYY"), time: bookingModalContent}
+      setConfirmation({status: true, appointment: formData});
+      closeBookingModal();
    }
 
    return (
@@ -22,14 +24,16 @@ export default function BookingModal() {
                <form>
                <TextField 
                   id="standard-read-only-input"
+                  style={{ width: "50%" }}
                   label="Appointment Date"
-                  value={selectedDay.format("MMMM DD YYYY")}
+                  value={selectedDay.day.format("MMMM DD YYYY")}
                   InputProps={{
                      readOnly: true,
                 }}
                    />
                    <TextField 
                   id="standard-read-only-input"
+                  style={{ width: "50%" }}
                   label="Appointment Time"
                   value={bookingModalContent}
                   InputProps={{

@@ -1,0 +1,42 @@
+.confirmation{
+   position: fixed;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   background: rgb(0, 0, 0, 0.8);
+   z-index: 1000; 
+   transition: 0.5s ease;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+.confirmationInner{
+   width: 100%;
+   max-width: 420px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   background: #e4e4e4;
+   border-radius: 5px;
+   color: #000;
+   padding: 10px;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   
+}
+
+.confirmation .close{
+   position: absolute;
+   top: 5px;
+   right: 1px;
+   padding: 3px 6px;
+   background-color: red;
+   border-radius: 5px;
+   cursor: pointer;
+   pointer-events: all;
+}

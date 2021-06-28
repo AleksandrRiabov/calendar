@@ -5,9 +5,10 @@ import DayInfo from "../DayInfo/DayInfo";
 import {useGlobalContext} from "../../context";
 
 const Week = ({week}) =>{
+
 	const {selectedDay} = useGlobalContext();
-	const isThisWeek = (week[1].week() === selectedDay.week() &&
-						week[1].year() === selectedDay.year());
+	const isThisWeek = (week[1].day.week() === selectedDay.day.week() &&
+						week[1].day.year() === selectedDay.day.year());
 	
 	const weekRef = useRef(null);
 	

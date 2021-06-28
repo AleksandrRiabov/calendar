@@ -1,4 +1,4 @@
-import generateCalendar from "./generateCalendar";
+
 
 const reducer = (state, action ) => {
 	
@@ -9,9 +9,8 @@ const reducer = (state, action ) => {
 		case "ADD MONTH": 
 			return {...state, currentDate: state.currentDate.clone().add(1, "month")}
 			
-		case  "BUILD CALENDAR":
-			  const updatedCalendar = generateCalendar(state.currentDate);
-			return {...state, calendar: updatedCalendar}
+		case  "CALENDAR":
+			return {...state, calendar: action.payload}
 		
 		case  "SELECT DAY":
 			return {...state, selectedDay: action.payload}
@@ -21,6 +20,12 @@ const reducer = (state, action ) => {
 		
 			case  "CLOSE BOOKING MODAL":
 				return {...state,  showBookingModal: false }	
+
+			case  "LOADING":
+				return {...state, loading: action.payload}	
+			case  "CONFIRMATION":
+				return {...state, confirmation: action.payload}	
+				
 		default: 
 			return state;
 	}
