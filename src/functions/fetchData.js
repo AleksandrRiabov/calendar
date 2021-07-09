@@ -5,6 +5,7 @@ const fetchData = async(url) => {
       return data
    } catch{
       console.log("Cant fetch");
+      return []
    }	
 }
 

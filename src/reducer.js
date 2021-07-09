@@ -24,7 +24,10 @@ const reducer = (state, action ) => {
 			case  "LOADING":
 				return {...state, loading: action.payload}	
 			case  "CONFIRMATION":
-				return {...state, confirmation: action.payload}	
+				return {...state, confirmation: action.payload}
+
+			case  "SINGLE DAY DATA":
+				return {...state, singleDayData: action.payload}	
 				
 		default: 
 			return state;

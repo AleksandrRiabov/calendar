@@ -11,7 +11,7 @@ const checkPercents = (arr) => {
       return 25
    } else if (count > arr.length / 4 && count <= arr.length / 2){
       return 50
-   } else if ( count > arr.length / 2 && count <= ((arr.length / 4) * 3)){
+   } else if ( count > arr.length / 2 && count !== arr.length){
       return 75
    } else if  (count === arr.length){
       return 100

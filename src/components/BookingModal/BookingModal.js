@@ -3,6 +3,7 @@ import "./BookingModal.css"
 import {useGlobalContext} from "../../context";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import postFormData from '../../functions/postFormData';
 
 const initialForm = {name: "", lastName: "", mobile: "", email: "", message: ""};
 
@@ -11,10 +12,18 @@ export default function BookingModal() {
    const [formContent, setFormContenet] = useState(initialForm);
 
 
-   const finalFormData = () => {
-      const formData = {...formContent, date: selectedDay.day.format("MMMM DD YYYY"), time: bookingModalContent}
-      setConfirmation({status: true, appointment: formData});
-      closeBookingModal();
+   const finalFormData = async() => {
+      const formData = {...formContent, date: selectedDay.day.format("MM DD YYYY"), time: bookingModalContent}
+
+       postFormData("/appointment/create", formData)
+       .then((res) => {
+          if (res.ok) {setConfirmation({status: true, appointment: formData});
+          closeBookingModal();
+         } else {
+            console.log("No appointment created..")
+         }
+       })
+     
    }
 
    return (

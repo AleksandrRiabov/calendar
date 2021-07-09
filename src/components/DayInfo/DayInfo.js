@@ -32,7 +32,7 @@ const DayInfo = ({isThisWeek}) => {
 					key={index}
 					onClick={() => {if (timeslot.available){openBookingModal(timeslot.time)}}} 
 					className={`dayInfoTime ${timeslot.available ? "available": "notAvailable"}`}
-					><span className="indicator"></span> {timeslot.time} <span>{timeslot.available ? "Available": "Not Available"}</span></h5>
+					><span className="indicator"></span> {timeslot.time} <span>{timeslot.available ? "Available": "N/A"}</span></h5>
 				})}
 				
 			</div>

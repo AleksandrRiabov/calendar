@@ -21,7 +21,9 @@ const SingleDay = ({day}) => {
 		}
 	}
 	
-	const percentBooked = checkPercents(day.data.times);
+	const percentBooked = day.data.workDay ? checkPercents(day.data.times) : 100;
+
+	console.log(percentBooked)
 	return (
 	   <div onClick={() => {selectDay(day); prevOrNextMonth()}} 
 		   className={`singleDay ${notThisMonth ? "other": ""} ${isSelected ? "selectedDay": ""}`}>

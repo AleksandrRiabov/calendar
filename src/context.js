@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useReducer} from "react";
 import moment from "moment";
 import reducer from "./reducer";
-import serverData from "./backEnd.js";
 import fetchData from "./functions/fetchData";
 const AppContext = React.createContext();
 
@@ -12,7 +11,8 @@ const initialState = {
 	showBookingModal: false,
 	bookingModalContent: "Content",
 	loading: true,
-	confirmation: {status: false, appointment: {}}
+	confirmation: {status: false, appointment: {}},
+	singleDayData: {}
 }
 
 
@@ -23,7 +23,7 @@ const AppProvider = ({children}) => {
 	   const generateCalendar = async(startingDate) => {
 		dispatch({type: "LOADING", payload: true});
 		
-		const serverData = await fetchData("http://localhost:3001/getmonth/fghfh");
+		const serverData = await fetchData(`http://localhost:3001/getmonth/${startingDate.format("MMMM DD YYYY")}`);
 	   const value = startingDate;
 	   const startDay = value.clone().startOf("month").startOf("week");
 		const endDay = value.clone().endOf("month").startOf("week");
@@ -37,8 +37,8 @@ const AppProvider = ({children}) => {
 				.fill(0)
 				.map(() => {
 					const date = day.add(1, "day").clone();
-					const data = serverData[date.format("MM DD YYYY")] ? serverData[date.format("MM DD YYYY")]: {workDay: false,
-						  times: [{time: "12:00", available: false}, {time: "15:00", available: false}, {time: "16:00", available: false}, {time: "19:00", available: false}]
+					const data = serverData[date.format("MM DD YYYY")] ? serverData[date.format("MM DD YYYY")]: {workDay: true,
+						  times: [{time: "12:00", available: true}, {time: "15:00", available: true}, {time: "front", available: true}, {time: "19:00", available: true}]
 						  };
 					if (date.format("MMMM DD YYYY") === startingDate.format("MMMM DD YYYY")){
 						dispatch({type: "SELECT DAY", payload: {day: date,data}}) 
@@ -62,7 +62,8 @@ const AppProvider = ({children}) => {
 		   dispatch({type: "CALENDAR", payload: calendar});
 	  }
 		buildCalendar();
-	},[state.currentDate])
+
+	},[state.currentDate, state.confirmation])
 	
 	const subtractMonth = () => {
 	     dispatch({type: "SUBTRACT MONTH"})	
@@ -88,7 +89,14 @@ const AppProvider = ({children}) => {
 
 	const setConfirmation = (data) => {
 		dispatch({type: "CONFIRMATION", payload: data})
-		console.log(data)
+	}
+
+	const setLoading = (val) => {
+		dispatch({type: "LOADING", payload: val});
+	}
+	
+	const SetSingleDayData = (data) => {
+		dispatch({type: "SINGLE DAY DATA", payload: data});
 	}
 
 
@@ -105,7 +113,10 @@ const AppProvider = ({children}) => {
 		bookingModalContent: state.bookingModalContent,
 		loading: state.loading,
 		setConfirmation,
-		confirmation: state.confirmation
+		setLoading,
+		confirmation: state.confirmation,
+		singleDayData: state.singleDayData,
+		SetSingleDayData
 	}
 	
 	return <AppContext.Provider
